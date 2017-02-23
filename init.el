@@ -272,8 +272,24 @@
 (setq auto-save-default nil) ; stop creating #autosave# files
 
 ;; Enable auto-complete globally
+(ac-config-default)
 (global-auto-complete-mode t)
 
 ;; Markdow live preview plugin
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-livedown"))
 (require 'livedown)
+
+;; Temporary disable fci-mode/lines wrap when a pop_up is displayed (fix bug with auto-complete)
+(defvar sanityinc/fci-mode-suppressed nil)
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible"
+  (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-mode)
+  (when fci-mode
+    (toggle-truncate-lines 0)
+    (turn-off-fci-mode)))
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed"
+  (when (and (not popup-instances) sanityinc/fci-mode-suppressed)
+    (setq sanityinc/fci-mode-suppressed nil)
+    (toggle-truncate-lines t)
+    (turn-on-fci-mode)))
