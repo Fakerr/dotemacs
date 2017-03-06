@@ -293,3 +293,6 @@
     (setq sanityinc/fci-mode-suppressed nil)
     (toggle-truncate-lines t)
     (turn-on-fci-mode)))
+
+;; Enable js2-mode for javascript (DISABLED)
+;;(add-hook 'js-mode-hook 'js2-minor-mode)
