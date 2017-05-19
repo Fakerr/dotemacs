@@ -13,7 +13,7 @@
                 (linum-mode -1)))
 
 ;; Hilights current line
-(global-hl-line-mode 1)
+(global-hl-line-mode 0)
 
 ;; Add melpa package source when using package list
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -28,9 +28,35 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
+ '(ansi-term-color-vector [unspecified "#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
  '(custom-enabled-themes (quote (oceanic)))
- '(custom-safe-themes (quote ("db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" "1d9def698a4c12a460d06c2594dde4bd46d128b2d0763324058cf4f09133c935" "71c35e02763f6a1752e9096f284ac81020f30e98891c233b5f8496a834c29b7a" "69168a8eaa2fbbe72440507efd43600018a2827326db7e04f89c79872fe0488a" "251348dcb797a6ea63bbfe3be4951728e085ac08eee83def071e4d2e3211acc3" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "66a92d07a0189facee51343718ed9add1211587295c845c47cf2febfa7568d21" "04ebeff60eb2b3e68646de93805c617d2ea9e57d9b03d6ad4b8c01d9ef3abc4a" "fd038d5fdcca50b77b0cb2f5fd55de92c749d8ecc249574b79074646b310d630" "b53e337e69739b2e5909b52b42c5ff279e85099d69b430e9a0c4141d5dafc17c" "76b9a5d0d1f4ac407cf3b7fb1f5368b06e1f78c1c0a4fb0776d5c3e2675c5ae9" "c128e5de037ae68997d74dae1630edd03285ac63d169f98d57ca2e398fd15b7e" "ecb278c933bf340a35a3472e8a31a993364a144d8a8b9923c401538c2ecae42a" "5f01eb7babe1f4adc8e27e9b601b8d080ecded1f8dd0d26fef6026fdc0e3ebf8" "6e8261fc03150ee1294c4d3e01226bf1cc063f518c0c39ad01d3076ef587e890" "ceb354e5e60a4f9f3889c59bff5c872c32c7baef6e655703a624104da17025cb" "e9d0e20fa961714e6c254466e7568090096f73b80a1c64ede8fb900cb2644ae9" "de92dd6d5e577090e01c1226f84eb41b292839b547c16746c9866885011c3aa0" "522fcd2c663938d11946b6f23c5552f126838d2f2ed44ea99946dfe0ea953213" "54609cb53cb71f158342adbf5ffdf899ba2932ce77fef82a3e2c81a2d8910a56" "a3bff9226b57f6ee827d51fad9f78ef26943067b598551ac96d1b9d18b5b39f4" "e0c1b1c551123b870689ce29ef0daf5bc65ec71932248b4f85a30e86ee59e5ce" "d8d4f544ec74f866cf2ae33acbf41dabce1bca2d2b9a7e4028a1b59dfdaeb579" "fcd04832f233dd17d903ef7b868d16581cd98d718965747b628fe0f5b8397a06" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "369cae4721535d842d113513a983192947ea6305c154558289454d5869132516" "6b20d669fcbcd79c6d0f3db36a71af1b88763246d3550a0c361866adecb38a9e" "12dd37432bb454355047c967db886769a6c60e638839405dad603176e2da366b" "1dbc7d9223a5292d103a480181c2edda71328f98c7d38e93cc9323f1a190ee8a" "1e264f9bbe5313b03eaec76f972b2354995f4296f4a83dcfea0a1d46ab4d9133" "d216ce6be247f256969344150fa774ccea618b4893fdad4b750ff21bd943788e" "d75bd9cc705fa30ba1727d2f22a8d22ec74debf294d74acf6321daecf172f903" "cac2d1d00e8783cbcd7c618f96526e3a7bf8db4f377539dbf60251e28167629d" "176ba0ea99d26556c99fb91fcf146922dd8206565567ba829dd5a21ae7cb9839" "c6f66646a17e4efd9f7ef094fab5ce8d6cc5a4389ef64f219584e96d45f22de6" "cab8b85d6d04db561f38ba1c1594d72ae41d5dea66298d7c1daaffccd51c1d72" "153ae92bc424bea6254c418bc819d234ef1e9832676a406d0238656d7212c0ef" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(tool-bar-mode nil))
+ '(custom-safe-themes (quote ("7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" "1d9def698a4c12a460d06c2594dde4bd46d128b2d0763324058cf4f09133c935" "71c35e02763f6a1752e9096f284ac81020f30e98891c233b5f8496a834c29b7a" "69168a8eaa2fbbe72440507efd43600018a2827326db7e04f89c79872fe0488a" "251348dcb797a6ea63bbfe3be4951728e085ac08eee83def071e4d2e3211acc3" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "66a92d07a0189facee51343718ed9add1211587295c845c47cf2febfa7568d21" "04ebeff60eb2b3e68646de93805c617d2ea9e57d9b03d6ad4b8c01d9ef3abc4a" "fd038d5fdcca50b77b0cb2f5fd55de92c749d8ecc249574b79074646b310d630" "b53e337e69739b2e5909b52b42c5ff279e85099d69b430e9a0c4141d5dafc17c" "76b9a5d0d1f4ac407cf3b7fb1f5368b06e1f78c1c0a4fb0776d5c3e2675c5ae9" "c128e5de037ae68997d74dae1630edd03285ac63d169f98d57ca2e398fd15b7e" "ecb278c933bf340a35a3472e8a31a993364a144d8a8b9923c401538c2ecae42a" "5f01eb7babe1f4adc8e27e9b601b8d080ecded1f8dd0d26fef6026fdc0e3ebf8" "6e8261fc03150ee1294c4d3e01226bf1cc063f518c0c39ad01d3076ef587e890" "ceb354e5e60a4f9f3889c59bff5c872c32c7baef6e655703a624104da17025cb" "e9d0e20fa961714e6c254466e7568090096f73b80a1c64ede8fb900cb2644ae9" "de92dd6d5e577090e01c1226f84eb41b292839b547c16746c9866885011c3aa0" "522fcd2c663938d11946b6f23c5552f126838d2f2ed44ea99946dfe0ea953213" "54609cb53cb71f158342adbf5ffdf899ba2932ce77fef82a3e2c81a2d8910a56" "a3bff9226b57f6ee827d51fad9f78ef26943067b598551ac96d1b9d18b5b39f4" "e0c1b1c551123b870689ce29ef0daf5bc65ec71932248b4f85a30e86ee59e5ce" "d8d4f544ec74f866cf2ae33acbf41dabce1bca2d2b9a7e4028a1b59dfdaeb579" "fcd04832f233dd17d903ef7b868d16581cd98d718965747b628fe0f5b8397a06" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "369cae4721535d842d113513a983192947ea6305c154558289454d5869132516" "6b20d669fcbcd79c6d0f3db36a71af1b88763246d3550a0c361866adecb38a9e" "12dd37432bb454355047c967db886769a6c60e638839405dad603176e2da366b" "1dbc7d9223a5292d103a480181c2edda71328f98c7d38e93cc9323f1a190ee8a" "1e264f9bbe5313b03eaec76f972b2354995f4296f4a83dcfea0a1d46ab4d9133" "d216ce6be247f256969344150fa774ccea618b4893fdad4b750ff21bd943788e" "d75bd9cc705fa30ba1727d2f22a8d22ec74debf294d74acf6321daecf172f903" "cac2d1d00e8783cbcd7c618f96526e3a7bf8db4f377539dbf60251e28167629d" "176ba0ea99d26556c99fb91fcf146922dd8206565567ba829dd5a21ae7cb9839" "c6f66646a17e4efd9f7ef094fab5ce8d6cc5a4389ef64f219584e96d45f22de6" "cab8b85d6d04db561f38ba1c1594d72ae41d5dea66298d7c1daaffccd51c1d72" "153ae92bc424bea6254c418bc819d234ef1e9832676a406d0238656d7212c0ef" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors (--map (solarized-color-blend it "#002b36" 0.25) (quote ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
+ '(hl-bg-colors (quote ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors (quote ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors (quote ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map (quote ((20 . "#dc322f") (40 . "#c85d17") (60 . "#be730b") (80 . "#b58900") (100 . "#a58e00") (120 . "#9d9100") (140 . "#959300") (160 . "#8d9600") (180 . "#859900") (200 . "#669b32") (220 . "#579d4c") (240 . "#489e65") (260 . "#399f7e") (280 . "#2aa198") (300 . "#2898af") (320 . "#2793ba") (340 . "#268fc6") (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list (quote (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(xterm-color-names ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -247,6 +273,7 @@
 
 ;; Enable flycheck mode
 (add-hook 'js-mode-hook #'flycheck-mode)
+(add-hook 'sh-mode-hook #'flycheck-mode)
 ;;(add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
 ;;(global-flycheck-mode)
 
@@ -294,5 +321,9 @@
     (toggle-truncate-lines t)
     (turn-on-fci-mode)))
 
+;; Set cursor color
+(set-cursor-color "#7FD6D6")
+
 ;; Enable js2-mode for javascript (DISABLED)
 ;;(add-hook 'js-mode-hook 'js2-minor-mode)
+
