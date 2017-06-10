@@ -28,14 +28,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
- '(ansi-term-color-vector [unspecified "#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
+ ;; The following two lines causes ansi-term to not work with the actual theme. So I'm commentting it out.
+ ;;'(ansi-color-names-vector ["#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
+ ;;'(ansi-term-color-vector [unspecified "#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"] t)
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(custom-enabled-themes (quote (oceanic)))
- '(custom-safe-themes (quote ("8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
+ '(custom-safe-themes (quote ("4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
  '(highlight-symbol-colors (--map (solarized-color-blend it "#002b36" 0.25) (quote ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
@@ -65,6 +66,9 @@
  '(mode-line ((t (:background "DarkOrange" :foreground "#0c0c0c" :box nil :weight normal :height 1.0))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(show-paren-match ((t (:background "burlywood")))))
+
+;; Set cursor color
+(set-cursor-color "#7FD6D6")
 
 ;; Disable scrollbar mode
 (scroll-bar-mode -1)
@@ -325,13 +329,15 @@
     (toggle-truncate-lines t)
     (turn-on-fci-mode)))
 
-;; Set cursor color
-(set-cursor-color "#7FD6D6")
-
-;; Enable js2-mode for javascript (DISABLED)
-;;(add-hook 'js-mode-hook 'js2-minor-mode)
-
 ;; Enable EVIL MODE multi cursor.
 (require 'evil-mc)
 (global-evil-mc-mode  1)
 
+;; Add gtags load-path and enbale it globally
+(add-to-list 'load-path "~/.emacs.d/plugins/gtags")
+(require 'gtags)
+
+;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+;;(set-frame-parameter (selected-frame) 'alpha <both>)
+(set-frame-parameter (selected-frame) 'alpha '(88 . 50))
+(add-to-list 'default-frame-alist '(alpha . (88 . 50)))
