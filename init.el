@@ -310,7 +310,7 @@
 ;; Enable auto-complete globally
 (ac-config-default)
 (global-auto-complete-mode t)
-(setq ac-auto-show-menu 0.0)
+(setq ac-auto-show-menu 0.1) ;; Setting 0.1 not 0.0 to avoid conflict with Yasnippet.
 (set-face-background 'ac-candidate-face "#4f687a")
 (set-face-foreground 'ac-candidate-face "#dae3ea")
 (set-face-underline 'ac-candidate-face "#536b72")
