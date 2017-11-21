@@ -64,7 +64,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 105 :width normal))))
- '(mode-line ((t (:background "DarkOrange" :foreground "#0c0c0c" :box nil :weight normal :height 1.0))))
+ ;;'(mode-line ((t (:background "DarkOrange" :foreground "#0c0c0c" :box nil :weight normal :height 1.0))))
+ ;;'(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
+ '(mode-line ((t (:background "#444c59" :foreground "#c9cfd8" :box nil :weight normal :height 1.0))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(show-paren-match ((t (:background "burlywood")))))
 
@@ -75,9 +77,9 @@
 (scroll-bar-mode -1)
 
 ;; Enable powerline and setup theme  #EAE6E6 #80ff00 DarkOrange #3BCE7B OliveDrab3  powerline-evil-center-color-theme
-(add-to-list 'load-path "~/.emacs.d/vendor/powerline")
-(require 'powerline)
-(powerline-evil-theme)
+;; (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
+;; (require 'powerline)
+;; (powerline-evil-theme)
 
 ;; Enable column number
 (column-number-mode 1)
@@ -345,8 +347,8 @@
 
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-(set-frame-parameter (selected-frame) 'alpha '(88 . 50))
-(add-to-list 'default-frame-alist '(alpha . (88 . 50)))
+(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
 
 ;; Enable relative linum mode.
 (require 'linum-relative)
@@ -354,3 +356,6 @@
 (setq linum-relative-format " %3s  ")
 (setq linum-relative-current-symbol "")
 (setq linum-relative-current-face t)
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/custom-mode-line"))
+(require 'custom-mode-line)
