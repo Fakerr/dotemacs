@@ -28,23 +28,52 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector (vector "#eaeaea" "#d54e53" "DarkOliveGreen3" "#e7c547" "DeepSkyBlue1" "#c397d8" "#70c0b1" "#181a26"))
- '(ansi-term-color-vector [unspecified "#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#eaeaea" "#d54e53" "DarkOliveGreen3" "#e7c547" "DeepSkyBlue1" "#c397d8" "#70c0b1" "#181a26"))
+ '(ansi-term-color-vector
+   [unspecified "#1B2B34" "#EC5f67" "#99C794" "#FAC863" "#6699CC" "#C594C5" "#6699CC" "#C0C5CE"])
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (oceanic)))
- '(custom-safe-themes (quote ("f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "e43ef5f6c3ab5b692f457120bb5b227f1c2177777d2e2f6603059f08f4af1112" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
- '(highlight-symbol-colors (--map (solarized-color-blend it "#002b36" 0.25) (quote ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "e43ef5f6c3ab5b692f457120bb5b227f1c2177777d2e2f6603059f08f4af1112" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
- '(highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
- '(hl-bg-colors (quote ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors (quote ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#B9F" "#B8D" "#B7B" "#B69" "#B57" "#B45" "#B33" "#B11")))
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors
+   (quote
+    ("#B9F" "#B8D" "#B7B" "#B69" "#B57" "#B45" "#B33" "#B11")))
  '(magit-diff-use-overlays nil)
- '(nrepl-message-colors (quote ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (tide typescript-mode zenburn-theme yascroll web-mode use-package solarized-theme smooth-scrolling smex smartparens relative-line-numbers rainbow-mode protobuf-mode powerline oceanic-theme nord-theme nlinum nix-mode neotree monky mode-icons markdown-mode linum-relative less-css-mode lb-datalog-mode json-mode js2-mode ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell evil-surround evil-mc dumb-jump counsel-projectile avy auto-complete arjen-grey-theme anything-project all-the-icons afternoon-theme abyss-theme)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
@@ -53,19 +82,40 @@
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
- '(vc-annotate-color-map (quote ((20 . "#dc322f") (40 . "#c85d17") (60 . "#be730b") (80 . "#b58900") (100 . "#a58e00") (120 . "#9d9100") (140 . "#959300") (160 . "#8d9600") (180 . "#859900") (200 . "#669b32") (220 . "#579d4c") (240 . "#489e65") (260 . "#399f7e") (280 . "#2aa198") (300 . "#2898af") (320 . "#2793ba") (340 . "#268fc6") (360 . "#268bd2"))))
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c85d17")
+     (60 . "#be730b")
+     (80 . "#b58900")
+     (100 . "#a58e00")
+     (120 . "#9d9100")
+     (140 . "#959300")
+     (160 . "#8d9600")
+     (180 . "#859900")
+     (200 . "#669b32")
+     (220 . "#579d4c")
+     (240 . "#489e65")
+     (260 . "#399f7e")
+     (280 . "#2aa198")
+     (300 . "#2898af")
+     (320 . "#2793ba")
+     (340 . "#268fc6")
+     (360 . "#268bd2"))))
  '(vc-annotate-very-old-color nil)
- '(weechat-color-list (quote (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
- '(xterm-color-names ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
- '(xterm-color-names-bright ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 105 :width normal))))
- ;;'(mode-line ((t (:background "DarkOrange" :foreground "#0c0c0c" :box nil :weight normal :height 1.0))))
- ;;'(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(mode-line ((t (:background "#444c59" :foreground "#c9cfd8" :box nil :weight normal :height 1.0))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(show-paren-match ((t (:background "burlywood")))))
@@ -218,6 +268,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+(add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'js-mode)))
 
 
 ;; Disable yasnippet when in term mode
@@ -276,15 +327,28 @@
 ;; Enable smartparens (auto pairs)
 (require 'smartparens-config)
 (add-hook 'js-mode-hook #'smartparens-mode)
+(add-hook 'js2-mode-hook #'smartparens-mode)
+(add-hook 'web-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'smartparens-mode)
 (add-hook 'html-mode-hook #'smartparens-mode)
 (add-hook 'lb-datalog-mode-hook #'smartparens-mode)
 (add-hook 'sh-mode-hook #'smartparens-mode)
 (add-hook 'org-mode-hook #'smartparens-mode)
+;;(add-hook 'rjsx-mode-hook #'smartparens-mode)
+
+;; Set line bar theme
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/custom-mode-line"))
+(require 'custom-mode-line)
 
 ;; Enable flycheck mode
 (add-hook 'js-mode-hook #'flycheck-mode)
+(add-hook 'js2-mode-hook #'flycheck-mode)
 (add-hook 'sh-mode-hook #'flycheck-mode)
+(add-hook 'web-mode-hook #'flycheck-mode)
+;;(add-hook 'rjsx-mode-hook #'flycheck-mode)
+;;(setq-default flycheck-disabled-checkers
+;;  (append flycheck-disabled-checkers
+;;    '(javascript-jshint)))
 ;;(add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
 ;;(global-flycheck-mode)
 
@@ -295,6 +359,9 @@
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 (setq smooth-scroll-margin 3)
+;;(setq scroll-conservatively 101) ;; move minimum when cursor exits view, instead of recentering
+;;(setq mouse-wheel-scroll-amount '(1)) ;; mouse scroll moves 1 line at a time, instead of 5 lines
+;;(setq mouse-wheel-progressive-speed nil) ;; on a long mouse scroll keep scrolling by 1 line
 
 ;; Disable this annoying thing :\ No newline at end of file
 (setq require-final-newline nil)
@@ -323,32 +390,34 @@
 (require 'livedown)
 
 ;; Temporary disable fci-mode/lines wrap when a pop_up is displayed (fix bug with auto-complete)
-(defvar sanityinc/fci-mode-suppressed nil)
-(defadvice popup-create (before suppress-fci-mode activate)
-  "Suspend fci-mode while popups are visible"
-  (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-mode)
-  (when fci-mode
-    (toggle-truncate-lines 0)
-    (turn-off-fci-mode)))
-(defadvice popup-delete (after restore-fci-mode activate)
-  "Restore fci-mode when all popups have closed"
-  (when (and (not popup-instances) sanityinc/fci-mode-suppressed)
-    (setq sanityinc/fci-mode-suppressed nil)
-    (toggle-truncate-lines t)
-    (turn-on-fci-mode)))
+
+;;(defvar sanityinc/fci-mode-suppressed nil)
+;;(defadvice popup-create (before suppress-fci-mode activate)
+;;  "Suspend fci-mode while popups are visible"
+;;  (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-mode)
+;;  (when fci-mode
+;;    (toggle-truncate-lines 0)
+;;    (turn-off-fci-mode)))
+;;(defadvice popup-delete (after restore-fci-mode activate)
+;;  "Restore fci-mode when all popups have closed"
+;;  (when (and (not popup-instances) sanityinc/fci-mode-suppressed)
+;;    (setq sanityinc/fci-mode-suppressed nil)
+;;    (toggle-truncate-lines t)
+;;    (turn-on-fci-mode)))
 
 ;; Enable EVIL MODE multi cursor.
 (require 'evil-mc)
 (global-evil-mc-mode  1)
 
 ;; Add gtags load-path and enbale it globally
-(add-to-list 'load-path "~/.emacs.d/plugins/gtags")
-(require 'gtags)
+;;(add-to-list 'load-path "~/.emacs.d/plugins/gtags")
+;;(require 'gtags)
 
+;; Set frames.
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+;;(set-frame-parameter (selected-frame) 'alpha '(95 . 50))
+;;(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
 ;; Enable relative linum mode.
 (require 'linum-relative)
@@ -357,5 +426,46 @@
 (setq linum-relative-current-symbol "")
 (setq linum-relative-current-face t)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/custom-mode-line"))
-(require 'custom-mode-line)
+
+;; Set up prettier
+;;(require 'prettier-js)
+;;(add-hook 'js-mode-hook 'prettier-js-mode)
+;;(add-hook 'js2-mode-hook 'prettier-js-mode)
+;;(add-hook 'rjsx-mode-hook 'prettier-js-mode)
+;;(add-hook 'web-mode-hook 'prettier-js-mode)
+
+
+;; Set up Typescript dev env
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  ;;(setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq tide-format-options '(:indentSize 2 :tabSize 2))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1))
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+ ;; (company-mode +1))
+
+;; aligns annotation to the right hand side
+;;(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+
+(require 'flycheck)
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+
