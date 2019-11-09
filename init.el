@@ -41,7 +41,7 @@
  '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "e43ef5f6c3ab5b692f457120bb5b227f1c2177777d2e2f6603059f08f4af1112" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
+    ("2cfc1cab46c0f5bae8017d3603ea1197be4f4fff8b9750d026d19f0b9e606fae" "c1390663960169cd92f58aad44ba3253227d8f715c026438303c09b9fb66cdfb" "a2dd771a05705be2a6e6adb6ddbc7a27ebf49edab1dffdbefe243096becba7c9" "f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "e43ef5f6c3ab5b692f457120bb5b227f1c2177777d2e2f6603059f08f4af1112" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
  '(highlight-symbol-colors
    (--map
     (solarized-color-blend it "#002b36" 0.25)
@@ -73,7 +73,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (tide typescript-mode zenburn-theme yascroll web-mode use-package solarized-theme smooth-scrolling smex smartparens relative-line-numbers rainbow-mode protobuf-mode powerline oceanic-theme nord-theme nlinum nix-mode neotree monky mode-icons markdown-mode linum-relative less-css-mode lb-datalog-mode json-mode js2-mode ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell evil-surround evil-mc dumb-jump counsel-projectile avy auto-complete arjen-grey-theme anything-project all-the-icons afternoon-theme abyss-theme)))
+    (jsx-mode javap-mode go-autocomplete exec-path-from-shell github-modern-theme twilight-bright-theme go-mode scss-mode white-theme tide typescript-mode zenburn-theme yascroll web-mode use-package solarized-theme smooth-scrolling smex smartparens relative-line-numbers rainbow-mode protobuf-mode powerline oceanic-theme nord-theme nlinum nix-mode neotree monky mode-icons markdown-mode linum-relative less-css-mode lb-datalog-mode json-mode js2-mode ggtags flycheck fill-column-indicator fic-mode evil-surround evil-mc dumb-jump counsel-projectile avy auto-complete arjen-grey-theme anything-project all-the-icons afternoon-theme abyss-theme)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
@@ -276,7 +276,7 @@
                 (yas-minor-mode -1)))
 
 ;; Set the indentation for javascript files
-(setq js-indent-level 4)
+(setq js-indent-level 2)
 
 ;; Set block selection background color
 (set-face-attribute 'region nil :background "#5f6f7f")
@@ -337,15 +337,15 @@
 ;;(add-hook 'rjsx-mode-hook #'smartparens-mode)
 
 ;; Set line bar theme
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/custom-mode-line"))
-(require 'custom-mode-line)
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/custom-mode-line"))
+;;(require 'custom-mode-line)
 
 ;; Enable flycheck mode
 (add-hook 'js-mode-hook #'flycheck-mode)
 (add-hook 'js2-mode-hook #'flycheck-mode)
 (add-hook 'sh-mode-hook #'flycheck-mode)
 (add-hook 'web-mode-hook #'flycheck-mode)
-;;(add-hook 'rjsx-mode-hook #'flycheck-mode)
+(add-hook 'rjsx-mode-hook #'flycheck-mode)
 ;;(setq-default flycheck-disabled-checkers
 ;;  (append flycheck-disabled-checkers
 ;;    '(javascript-jshint)))
@@ -356,12 +356,12 @@
 (global-set-key (kbd "M-é") 'avy-goto-char)
 
 ;; Enable smooth-scrolling. (Scrolling like others ides)
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
-(setq smooth-scroll-margin 3)
-;;(setq scroll-conservatively 101) ;; move minimum when cursor exits view, instead of recentering
-;;(setq mouse-wheel-scroll-amount '(1)) ;; mouse scroll moves 1 line at a time, instead of 5 lines
-;;(setq mouse-wheel-progressive-speed nil) ;; on a long mouse scroll keep scrolling by 1 line
+;;(require 'smooth-scrolling)
+;;(smooth-scrolling-mode 1)
+;;(setq smooth-scroll-margin 3)
+(setq scroll-conservatively 101) ;; move minimum when cursor exits view, instead of recentering
+(setq mouse-wheel-scroll-amount '(1)) ;; mouse scroll moves 1 line at a time, instead of 5 lines
+(setq mouse-wheel-progressive-speed nil) ;; on a long mouse scroll keep scrolling by 1 line
 
 ;; Disable this annoying thing :\ No newline at end of file
 (setq require-final-newline nil)
@@ -379,11 +379,11 @@
 ;; Enable auto-complete globally
 (ac-config-default)
 (global-auto-complete-mode t)
-(setq ac-auto-show-menu 0.1) ;; Setting 0.1 not 0.0 to avoid conflict with Yasnippet.
-(set-face-background 'ac-candidate-face "#4f687a")
-(set-face-foreground 'ac-candidate-face "#dae3ea")
-(set-face-underline 'ac-candidate-face "#536b72")
-(set-face-background 'ac-selection-face "steelblue")
+(setq ac-auto-show-menu 0.5) ;; Setting 0.1 not 0.0 to avoid conflict with Yasnippet.
+;;(set-face-background 'ac-candidate-face "#4f687a")
+;;(set-face-foreground 'ac-candidate-face "#dae3ea")
+;;(set-face-underline 'ac-candidate-face "#536b72")
+;;(set-face-background 'ac-selection-face "steelblue")
 
 ;; Markdow live preview plugin
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-livedown"))
@@ -414,10 +414,10 @@
 ;;(require 'gtags)
 
 ;; Set frames.
-;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
-;;(set-frame-parameter (selected-frame) 'alpha <both>)
-;;(set-frame-parameter (selected-frame) 'alpha '(95 . 50))
-;;(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
+(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+(set-frame-parameter (selected-frame) 'alpha <both>)
+(set-frame-parameter (selected-frame) 'alpha '(100 . 50))
+(add-to-list 'default-frame-alist '(alpha . (100 . 50)))
 
 ;; Enable relative linum mode.
 (require 'linum-relative)
@@ -469,3 +469,40 @@
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 
+;;;;;;;;;;;   Shell configuration   ;;;;;;;;;
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+
+
+(setq-local indent-line-function 'js-jsx-indent-line)
+
+;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
+
+;; Golang indentation config
+;;(add-to-list 'exec-path "/home/walidberrahaal/go/bin")
+;;(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq tab-width 8)
+            (setq indent-tabs-mode 1)))
+
+;; Golang autocomplete
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+
+
+;;(defun set-exec-path-from-shell-PATH ()
+;;  (let ((path-from-shell (replace-regexp-in-string
+;;                          "[ \t\n]*$"
+;;                          ""
+;;                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+;;    (setenv "PATH" path-from-shell)
+;;    (setq eshell-path-env path-from-shell) ; for eshell users
+;;    (setq exec-path (split-string path-from-shell path-separator))))
+;;
+;;(when window-system (set-exec-path-from-shell-PATH))
+;;
+;;(setenv "GOPATH" "/home/walidberrahaal/go")
