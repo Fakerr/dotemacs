@@ -1,6 +1,7 @@
 (require 'package)
 
 ;; Set up font and font size
+;; For emacs-27,use set-frame-font instead of set-default-font
 (set-frame-font "DejaVu Sans Mono")
 (set-face-attribute 'default nil :height 105)
 
