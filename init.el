@@ -1,12 +1,12 @@
 (require 'package)
 
 ;; Set up font and font size
-(set-default-font "DejaVu Sans Mono")
+(set-frame-font "DejaVu Sans Mono")
 (set-face-attribute 'default nil :height 105)
 
 ;; Activate linum-mode and format it
 (global-linum-mode t)
-(setq linum-format " %3d  " )
+(setq linum-format " %3d ")
 
 ;; Disable linum-mode for ansi-term
 (add-hook 'term-mode-hook (lambda()
@@ -38,7 +38,7 @@
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (nord)))
  '(custom-safe-themes
    (quote
     ("2cfc1cab46c0f5bae8017d3603ea1197be4f4fff8b9750d026d19f0b9e606fae" "c1390663960169cd92f58aad44ba3253227d8f715c026438303c09b9fb66cdfb" "a2dd771a05705be2a6e6adb6ddbc7a27ebf49edab1dffdbefe243096becba7c9" "f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "e43ef5f6c3ab5b692f457120bb5b227f1c2177777d2e2f6603059f08f4af1112" "4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" "1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" default)))
@@ -144,6 +144,47 @@
 ;; Activate EVIL MODE
 (require 'evil)
   (evil-mode 1)
+
+;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
+
+;; Golang indentation config
+;;(add-to-list 'exec-path "/home/walidberrahaal/go/bin")
+;;(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq tab-width 8)
+            (setq indent-tabs-mode 1)))
+
+;; Golang autocomplete
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/go-autocomplete.el"))
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+
+;;(defun set-exec-path-from-shell-PATH ()
+;;  (let ((path-from-shell (replace-regexp-in-string
+;;                          "[ \t\n]*$"
+;;                          ""
+;;                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+;;    (setenv "PATH" path-from-shell)
+;;    (setq eshell-path-env path-from-shell) ; for eshell users
+;;    (setq exec-path (split-string path-from-shell path-separator))))
+;;
+;;(when window-system (set-exec-path-from-shell-PATH))
+;;
+;;(setenv "GOPATH" "/home/walidberrahaal/go")
+
+;;(require 'company)                                   ; load company mode
+;;(require 'company-go)                                ; load company mode go backend
+;;
+;;(add-hook 'go-mode-hook (lambda ()
+;;                          (set (make-local-variable 'company-backends) '(company-go))
+;;                          (company-mode)))
+;;
+;;(setq company-tooltip-limit 20)                      ; bigger popup window
+;;(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+;;(setq company-echo-delay 0)                          ; remove annoying blinking
+;;(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
 ;; Disable evil mode when in netotree
 (add-hook 'neotree-mode-hook 'evil-emacs-state)
@@ -327,6 +368,7 @@
 ;; Enable smartparens (auto pairs)
 (require 'smartparens-config)
 (add-hook 'js-mode-hook #'smartparens-mode)
+(add-hook 'go-mode-hook #'smartparens-mode)
 (add-hook 'js2-mode-hook #'smartparens-mode)
 (add-hook 'web-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'smartparens-mode)
@@ -413,6 +455,9 @@
 ;;(add-to-list 'load-path "~/.emacs.d/plugins/gtags")
 ;;(require 'gtags)
 
+;; Improve cursor perform
+(setq auto-window-vscroll nil)
+
 ;; Set frames.
 (set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 (set-frame-parameter (selected-frame) 'alpha <both>)
@@ -420,11 +465,11 @@
 (add-to-list 'default-frame-alist '(alpha . (100 . 50)))
 
 ;; Enable relative linum mode.
-(require 'linum-relative)
-(linum-relative-mode 1)
-(setq linum-relative-format " %3s  ")
-(setq linum-relative-current-symbol "")
-(setq linum-relative-current-face t)
+;;(require 'linum-relative)
+;;(linum-relative-mode 0)
+;;(setq linum-relative-format "%3s  ")
+;;(setq linum-relative-current-symbol "")
+;;(setq linum-relative-current-face t)
 
 
 ;; Set up prettier
@@ -436,37 +481,37 @@
 
 
 ;; Set up Typescript dev env
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  ;;(setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (setq tide-format-options '(:indentSize 2 :tabSize 2))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1))
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
- ;; (company-mode +1))
-
-;; aligns annotation to the right hand side
-;;(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))))
-
-(require 'flycheck)
-;; enable typescript-tslint checker
-(flycheck-add-mode 'typescript-tslint 'web-mode)
+;;(defun setup-tide-mode ()
+;;  (interactive)
+;;  (tide-setup)
+;;  (flycheck-mode +1)
+;;  ;;(setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;  (setq tide-format-options '(:indentSize 2 :tabSize 2))
+;;  (eldoc-mode +1)
+;;  (tide-hl-identifier-mode +1))
+;;  ;; company is an optional dependency. You have to
+;;  ;; install it separately via package-install
+;;  ;; `M-x package-install [ret] company`
+;; ;; (company-mode +1))
+;;
+;;;; aligns annotation to the right hand side
+;;;;(setq company-tooltip-align-annotations t)
+;;
+;;;; formats the buffer before saving
+;;(add-hook 'before-save-hook 'tide-format-before-save)
+;;
+;;(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;;
+;;(require 'web-mode)
+;;(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+;;(add-hook 'web-mode-hook
+;;          (lambda ()
+;;            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;;              (setup-tide-mode))))
+;;
+;;(require 'flycheck)
+;;;; enable typescript-tslint checker
+;;(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 
 ;;;;;;;;;;;   Shell configuration   ;;;;;;;;;
@@ -476,33 +521,5 @@
 
 
 
-(setq-local indent-line-function 'js-jsx-indent-line)
+;;(setq-local indent-line-function 'js-jsx-indent-line)
 
-;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
-
-;; Golang indentation config
-;;(add-to-list 'exec-path "/home/walidberrahaal/go/bin")
-;;(add-hook 'before-save-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq tab-width 8)
-            (setq indent-tabs-mode 1)))
-
-;; Golang autocomplete
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-
-
-;;(defun set-exec-path-from-shell-PATH ()
-;;  (let ((path-from-shell (replace-regexp-in-string
-;;                          "[ \t\n]*$"
-;;                          ""
-;;                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-;;    (setenv "PATH" path-from-shell)
-;;    (setq eshell-path-env path-from-shell) ; for eshell users
-;;    (setq exec-path (split-string path-from-shell path-separator))))
-;;
-;;(when window-system (set-exec-path-from-shell-PATH))
-;;
-;;(setenv "GOPATH" "/home/walidberrahaal/go")
