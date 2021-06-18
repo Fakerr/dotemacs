@@ -29,10 +29,6 @@
 (require 'evil)
   (evil-mode 1)
 
-;; Enable EVIL MODE multi cursor.
-(require 'evil-mc)
-(global-evil-mc-mode  1)
-
 ;; Set cursor color
 (set-cursor-color "#7FD6D6")
 
@@ -43,6 +39,9 @@
 (require 'neotree)
 (global-set-key [f12] 'neotree-toggle)
 (global-set-key [f5] 'neotree-toggle)
+
+;; enable company mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
 
@@ -55,10 +54,24 @@
             (setq tab-width 8)
             (setq indent-tabs-mode 1)))
 
+;; Golang company autocomplete
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/company-go.el"))
+(require 'company)                                   ; load company mode
+(require 'company-go)                                ; load company mode go backend
+(setq company-tooltip-limit 20)                      ; bigger popup window
+
+(setq company-idle-delay .1)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+
 ;; Golang autocomplete
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/go-autocomplete.el"))
-(require 'go-autocomplete)
-(require 'auto-complete-config)
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/go-autocomplete.el"))
+;;(require 'go-autocomplete)
+;;(require 'auto-complete-config)
 
 
 ;; Disable evil mode when in netotree
@@ -165,7 +178,7 @@
 (add-hook 'org-mode-hook #'smartparens-mode)
 
 ;; Set key binding to avy
-(global-set-key (kbd "M-é") 'avy-goto-char)
+(global-set-key (kbd "C-:") 'avy-goto-char)
 
 ;; Disable this annoying thing :\ No newline at end of file
 (setq require-final-newline nil)
@@ -193,12 +206,13 @@
 
 ;; Enable auto-complete globally
 (ac-config-default)
-(global-auto-complete-mode t)
+(global-auto-complete-mode 0)
 (setq ac-auto-show-menu 0.1) ;; Setting 0.1 not 0.0 to avoid conflict with Yasnippet.
 (set-face-background 'ac-candidate-face "#4f687a")
 (set-face-foreground 'ac-candidate-face "#dae3ea")
 (set-face-underline 'ac-candidate-face "#536b72")
 (set-face-background 'ac-selection-face "steelblue")
+(use-package auto-complete :config (ac-flyspell-workaround) )
 
 ;; Set frames.
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
@@ -221,10 +235,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" default)))
+   '("1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Enable EVIL MODE multi cursor.
+(require 'evil-mc)
+(global-evil-mc-mode  1)
+
+(setq evil-mc-enable-bar-cursor t)
+(set-face-background 'evil-mc-cursor-default-face "#7FD6D6")
+
+;; Enable evil surround mode.
+(require 'evil-surround)
+(global-evil-surround-mode 1)
