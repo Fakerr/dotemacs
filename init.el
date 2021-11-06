@@ -16,18 +16,14 @@
 (add-hook 'term-mode-hook (lambda()
                 (linum-mode -1)))
 
-;; Add melpa package source when using package list
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;;(package-initialize)
-
-;; Load emacs packages and activate them
-;; This must come brfore configurations of installed packages.
-;; Don't delete this line.
-(setq package-enable-at-startup nil) (package-initialize)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 ;; Activate EVIL MODE
 (require 'evil)
-  (evil-mode 1)
+(evil-mode 1)
 
 ;; Set cursor color
 (set-cursor-color "#7FD6D6")
@@ -39,40 +35,6 @@
 (require 'neotree)
 (global-set-key [f12] 'neotree-toggle)
 (global-set-key [f5] 'neotree-toggle)
-
-;; enable company mode
-(add-hook 'after-init-hook 'global-company-mode)
-
-;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
-
-;; Golang indentation config
-;;(add-to-list 'exec-path "/home/walidberrahaal/go/bin")
-;;(add-hook 'before-save-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq tab-width 8)
-            (setq indent-tabs-mode 1)))
-
-;; Golang company autocomplete
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/company-go.el"))
-(require 'company)                                   ; load company mode
-(require 'company-go)                                ; load company mode go backend
-(setq company-tooltip-limit 20)                      ; bigger popup window
-
-(setq company-idle-delay .1)                         ; decrease delay before autocompletion popup shows
-(setq company-echo-delay 0)                          ; remove annoying blinking
-(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
-
-;; Golang autocomplete
-;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/go-autocomplete.el"))
-;;(require 'go-autocomplete)
-;;(require 'auto-complete-config)
-
 
 ;; Disable evil mode when in netotree
 (add-hook 'neotree-mode-hook 'evil-emacs-state)
@@ -116,12 +78,6 @@
 (global-set-key (kbd "M-n") 'move-line-down)
 ;; End move line
 
-;; Add yasnippet load-path and enbale it globally
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-(add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'js-mode)))
-
 ;; Disable yasnippet when in term mode
 (add-hook 'term-mode-hook (lambda()
                 (yas-minor-mode -1)))
@@ -137,10 +93,11 @@
 (global-auto-revert-mode 1)
 
 ;; Set up ivy, counsel and swiper
-(ivy-mode 1)
+(ivy-mode)
 (setq ivy-use-virtual-buffers t)
-;; number of result lines to display
-(setq ivy-height 13)
+(setq enable-recursive-minibuffers t)
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f6>") 'ivy-resume)
@@ -148,6 +105,7 @@
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
@@ -156,7 +114,7 @@
 (global-set-key (kbd "C-c k") 'counsel-ag)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 ;; M-x enhancement for Emacs.
 (require 'smex) 
@@ -168,7 +126,7 @@
 ;; Enable smartparens (auto pairs)
 (require 'smartparens-config)
 (add-hook 'js-mode-hook #'smartparens-mode)
-(add-hook 'go-mode-hook #'smartparens-mode)
+;;(add-hook 'go-mode-hook #'smartparens-mode)
 (add-hook 'js2-mode-hook #'smartparens-mode)
 (add-hook 'web-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'smartparens-mode)
@@ -185,13 +143,19 @@
 
 ;; Enable projectile-mode (should be integrated with counsel via counsel-projectile library)
 (projectile-mode 1)
+;; Recommended keymap prefix on Windows/Linux
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Integrate projectile with counsel_projectile.
-(counsel-projectile-on)
+;;(counsel-projectile-mode 1)
 
 ;; Disable backup files.
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+
+;; FIXME:  Enable protobuf mode
+(add-to-list 'load-path "~/.emacs.d/proto")
+(require 'protobuf-mode)
 
 ;; Markdow live preview plugin
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-livedown"))
@@ -203,16 +167,6 @@
 ;;;;;;;;;;;   Shell configuration   ;;;;;;;;;
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-
-;; Enable auto-complete globally
-(ac-config-default)
-(global-auto-complete-mode 0)
-(setq ac-auto-show-menu 0.1) ;; Setting 0.1 not 0.0 to avoid conflict with Yasnippet.
-(set-face-background 'ac-candidate-face "#4f687a")
-(set-face-foreground 'ac-candidate-face "#dae3ea")
-(set-face-underline 'ac-candidate-face "#536b72")
-(set-face-background 'ac-selection-face "steelblue")
-(use-package auto-complete :config (ac-flyspell-workaround) )
 
 ;; Set frames.
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
@@ -234,14 +188,26 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-quickhelp-color-background "#4C566A")
+ '(company-quickhelp-color-foreground "#D8DEE9")
  '(custom-safe-themes
-   '("1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" default)))
+   '("1d7e67fe9d8deacf470ffb2c6ccb181ac5c1af580f9edbdba90e6e0f1ba56ace" "db2ecce0600e3a5453532a89fc19b139664b4a3e7cbefce3aaf42b6d9b1d6214" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8ac2745fb5d9dad05f42228655508e14e4ce3a5adf64c9bedaa6e570a55f60be" "7f968c172d6ec46766773a8304c7570bdff45f1220d3700008a437d9529ca3e4" default))
+ '(lsp-enable-links t)
+ '(lsp-go-import-shortcut "Both")
+ '(lsp-go-links-in-hover t)
+ '(markdown-link-space-sub-char "-")
+ '(package-selected-packages
+   '(ag counsel-projectile yasnippet-snippets flycheck lsp-treemacs company yasnippet dash company-quickhelp pos-tip zenburn-theme yascroll white-theme web-mode use-package twilight-bright-theme solarized-theme smooth-scrolling smooth-scroll smex smartparens scss-mode scala-mode rjsx-mode relative-line-numbers rainbow-mode prettier-js powerline oceanic-theme nord-theme nlinum nix-mode neotree monky mode-icons markdown-mode linum-relative less-css-mode lb-datalog-mode jsx-mode json-mode javap-mode go-complete go-autocomplete github-modern-theme ggtags fill-column-indicator fic-mode exec-path-from-shell evil-surround evil-mc dumb-jump dockerfile-mode avy arjen-grey-theme anything-project all-the-icons afternoon-theme abyss-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(button ((t (:background "#2E3440" :foreground "#88C0D0" :box (:line-width 1 :color "#D8DEE9" :style sunken-button)))))
+ '(link ((t (:underline t))))
+ '(lsp-headerline-breadcrumb-separator-face ((t (:inherit shadow :foreground "PaleVioletRed3" :height 0.8))))
+ '(lsp-headerline-breadcrumb-symbols-face ((t (:inherit font-lock-doc-face :foreground "PaleVioletRed3" :weight bold))))
+ '(markdown-link-face ((t (:foreground "#88C0D0")))))
 
 ;; Enable EVIL MODE multi cursor.
 (require 'evil-mc)
@@ -253,3 +219,36 @@
 ;; Enable evil surround mode.
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+;; Company mode
+(require 'company)                                   ; load company mode
+;;(setq company-idle-delay 0.3)
+;;(setq company-minimum-prefix-length 1)
+;;(setq company-tooltip-limit 20)                      ; bigger popup window
+;;(setq company-idle-delay .1)                         ; decrease delay before autocompletion popup shows
+;;(setq company-echo-delay 0)                          ; remove annoying blinking
+;;(setq company-begin-commands '(self-insert-command))   ; start autocompletion only after typing
+;;(add-hook 'after-init-hook 'global-company-mode)
+
+;; To display a popup with the function description
+;;(company-quickhelp-mode)
+;;(setq company-quickhelp-delay .1)
+
+(require 'lsp-mode)
+(add-hook 'go-mode-hook #'lsp-deferred)
+
+;;;;;;;;;;;   Golang configuration   ;;;;;;;;;
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+;; Add yasnippet load-path and enbale it globally
+;;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20200604.246/")
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+
